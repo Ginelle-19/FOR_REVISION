@@ -1,0 +1,79 @@
+<div class="container-consumable">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="eco" aria-hidden="false"> </mat-icon>Consumables
+        </p>
+      </div>
+
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form></form>
+      <div class="container-filter">
+        <select
+          [(ngModel)]="SelectedCourseID"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <option *ngFor="let course of CourseArray" [value]="course.CourseID">
+            {{ course.CourseName }}
+          </option>
+        </select>
+        <button (click)="filterConsumables()">Filter</button>
+        <button (click)="clearFilter()">Clear</button>
+      </div>
+
+      <div class="container-table">
+        <table cellspacing="0">
+          <thead>
+            <tr>
+              <th scope="col">Consumable Name</th>
+              <th scope="col">Quantity</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let ConsumableItem of ConsumableArray
+                  | paginate
+                    : {
+                        itemsPerPage: itemsPerPage,
+                        currentPage: p,
+                        totalItems: ConsumableArray.length
+                      }
+              "
+            >
+              <td>{{ ConsumableItem.ConsumableName }}</td>
+              <td>{{ ConsumableItem.Quantity }}</td>
+              <td>
+                <div
+                  class="stocks-main"
+                  [ngClass]="getStatusClass(ConsumableItem.Quantity)"
+                >
+                  <div class="stocks">
+                    {{ getStatusString(ConsumableItem.Quantity) }}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-pagination-outer">
+          <pagination-controls
+            class="table-pagination-inner"
+            (pageChange)="p = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

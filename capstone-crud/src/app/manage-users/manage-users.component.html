@@ -1,0 +1,147 @@
+<div class="container-manage-users">
+  <div class="container-inside">
+    <div class="card">
+      <form>
+        <div class="header">
+          <p>
+            <mat-icon fontIcon="manage_accounts" aria-hidden="false">
+            </mat-icon>
+            Users
+          </p>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader-container" *ngIf="!isResultLoaded">
+          <div class="loader">
+            <label
+              >Sorry, we're having trouble loading the database. Try reloading
+              the page.</label
+            >
+            <div class="loading"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="searchByStudNum">
+      <input
+        type="text"
+        [(ngModel)]="searchStudentNum"
+        placeholder="Search by ID Number"
+      />
+      <button type="button" (click)="searchUserByStudentNum()">Search</button>
+      <button type="button" (click)="clearSearch()">Clear</button>
+    </div>
+
+    <div class="container-table">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th id="lname" scope="col">
+              Last Name
+              <div class="sort-buttons">
+                <button
+                  class="sort-lnamebutton"
+                  type="button"
+                  (click)="sortLastNameAsc()"
+                >
+                  ▲
+                </button>
+                <button
+                  class="sort-lnamebutton"
+                  type="button"
+                  (click)="sortLastNameDesc()"
+                >
+                  ▼
+                </button>
+              </div>
+            </th>
+            <th scope="col">First Name</th>
+            <th scope="col">Student Number</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Password</th>
+            <th scope="col">Access Level</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let user of (filteredUsers && filteredUsers.length > 0
+                ? filteredUsers
+                : users
+              )
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: p,
+                      totalItems:
+                        filteredUsers && filteredUsers.length > 0
+                          ? filteredUsers.length
+                          : users && users.length > 0
+                          ? users.length
+                          : 0
+                    }
+            "
+          >
+            <td>
+              <input type="text" [(ngModel)]="user.LastName" />
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="user.FirstName" />
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="user.StudentNum" />
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="user.UserName" />
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="user.Password" />
+            </td>
+            <td>
+              <select
+                [(ngModel)]="user.AccessLevelID"
+                (change)="updateAccessLevel(user)"
+              >
+                <option
+                  *ngFor="let AccessItem of AccessLevels"
+                  [value]="AccessItem.AccessLevelID"
+                >
+                  {{ AccessItem.AccessName }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <button
+                type="button"
+                (click)="toggleActive(user)"
+                [class.active]="user.isActive === 1"
+                [class.inactive]="user.isActive === 0"
+              >
+                {{ user.isActive ? "Active" : "Inactive" }}
+              </button>
+            </td>
+
+            <td class="table-button">
+              <button type="button" (click)="save(user)">
+                <mat-icon fontIcon="save" aria-hidden="false"></mat-icon>Save
+              </button>
+              <button type="button" (click)="deleteUser(user)">
+                <mat-icon fontIcon="delete" aria-hidden="false"></mat-icon
+                >Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-pagination-outer">
+        <pagination-controls
+          class="table-pagination-inner"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

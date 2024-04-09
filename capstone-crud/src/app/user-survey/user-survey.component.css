@@ -1,0 +1,90 @@
+/* Start of Main Table format */
+.container-survey {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+p mat-icon {
+  padding-right: 10px;
+}
+
+.mat-drawer-content {
+  height: 0;
+}
+
+.container-survey .container-inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+}
+/* End of Main Table format */
+
+/* Start of Main header format */
+.container-survey .container-inside .card form {
+  width: 1300px;
+}
+.header {
+  width: 100%;
+  background-color: var(--darkest-color);
+}
+
+.container-survey .container-inside .card p {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0px 0px 0px 20px;
+}
+
+/* End of Header Table format */
+
+/* FRAME SURVEY  */
+.container-survey .container-inside .container-table {
+  border-spacing: 0;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin-top: 0px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    119,
+    119,
+    119,
+    0.6
+  ); /* Adjust the background color and opacity */
+  z-index: -0;
+  margin-top: 120px;
+  margin-left: 100px;
+}
+
+@media screen and (max-width: 480px) {
+  .container-survey {
+    max-width: 25%;
+    margin: auto;
+  }
+
+  .container-survey .container-inside .card p {
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap");
+
+body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fff;
+}
+
+:root {
+  --darkest2-color: #4b004b;
+  --darkest-color: #660066;
+  --normal-color: #993399;
+  --lightest-color: #e2bce2;
+  --graynormal-color: #4b4b4b;
+  --graydarkest-color: #353535;
+  --graylightest-color: #616161;
+  --reddarkest-color: #b60000;
+  --background-color: #f3f3f3;
+  --editbutton-color: #5897ee;
+  --editbuttonh-color: rgb(0, 98, 235);
+  --deletebutton-color: #e33437;
+  --green-color: #509156;
+}
+
+@keyframes slideanimation2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

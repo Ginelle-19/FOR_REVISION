@@ -1,0 +1,61 @@
+<div class="outer-container">
+  <div class="container">
+    <div class="image-container">
+      <img [src]="imageUrl" alt="Holy Angel University" />
+      <div class="text-container">
+        <h2>HOLY ANGEL UNIVERSITY</h2>
+        <h3>COLLEGE OF CRIMINAL JUSTICE EDUCATION AND FORENSICS</h3>
+        <p>&copy; 2024 CCJEFLABSOLUTIONS. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="login-form">
+      <div class="login-header">
+        <h2>User Login</h2>
+      </div>
+      <div class="content">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" required #UserName />
+        <br />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Password: MMDDYYYY"
+          required
+          #Password
+        />
+        <br />
+        <div class="form-check">
+          <input
+            type="checkbox"
+            id="termsCheckbox"
+            name="termsCheckbox"
+            required
+            [(ngModel)]="termsAgreed"
+          />
+          <div class="label-holder">
+            <label for="termsCheckbox"
+              >I agree to the
+              <a routerLink="/terms">
+                Terms and Conditions <mat-icon id="launch">launch</mat-icon></a
+              ></label
+            >
+          </div>
+        </div>
+
+        <div class="login-button">
+          <button type="submit" (click)="OnLoginClicked()">
+            Login<mat-icon>login</mat-icon>
+          </button>
+        </div>
+        <div class="register-button">
+          <a [routerLink]="['/register']"
+            ><button type="button">
+              Register<mat-icon>person_add_alt_1</mat-icon>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

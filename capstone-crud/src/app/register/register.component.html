@@ -1,0 +1,73 @@
+<div class="body">
+  <div class="container">
+    <div class="register-form">
+      <div class="header">
+        <h1>Create an account</h1>
+      </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <div>
+          <label for="FirstName">First Name</label>
+          <input
+            type="text"
+            placeholder="Enter your first name"
+            id="FirstName"
+            formControlName="FirstName"
+            required
+          />
+        </div>
+        <div>
+          <label for="LastName">Last Name</label>
+          <input
+            type="text"
+            placeholder="Enter your first name"
+            id="LastName"
+            formControlName="LastName"
+            required
+          />
+        </div>
+        <div>
+          <label for="Birthdate">Birthday</label>
+          <input
+            type="date"
+            id="Birthdate"
+            formControlName="Birthdate"
+            required
+          />
+          <div
+            class="birthday-error"
+            *ngIf="registerForm.get('Birthdate')?.hasError('invalidBirthday')"
+          >
+            Birthday cannot be set to today or after today.
+          </div>
+        </div>
+
+        <div>
+          <label for="StudentNum">Student Number</label>
+          <input
+            type="number"
+            placeholder="Enter your student number"
+            id="StudentNum"
+            formControlName="StudentNum"
+            required
+            (input)="onStudentNumInput($event)"
+          />
+        </div>
+
+        <hr />
+
+        <div class="container-button">
+          <div class="text-seperator">
+            <button type="submit">
+              Register<mat-icon>check_circle</mat-icon>
+            </button>
+          </div>
+          <a [routerLink]="['/login']"
+            ><button type="button">
+              Go Back<mat-icon>arrow_circle_left</mat-icon>
+            </button></a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

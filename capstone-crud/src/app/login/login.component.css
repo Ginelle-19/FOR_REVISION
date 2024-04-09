@@ -1,0 +1,290 @@
+body {
+  height: 100%;
+}
+
+.mat-simple-snackbar {
+  justify-content: center !important;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url("/assets/mainbg.jpg") center center/cover no-repeat;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.outer-container .container .login-form .login-header {
+  margin-bottom: 30px;
+}
+
+.login-form {
+  width: 300px;
+  margin-left: 30px;
+  text-align: center;
+  padding: 35px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f3f3f3ee;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #993399;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  outline: none;
+}
+
+input[type="password"]:focus {
+  border: 2px solid #993399;
+}
+
+.login-form button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  background-color: #993399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+
+.login-form button[type="button"] {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  background-color: #993399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+
+.login-form button:hover {
+  background-color: #660066;
+}
+
+.cancel-button-div {
+  text-align: right;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.login-form a {
+  text-decoration: none;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.image-container img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-container {
+  margin-top: 0px;
+  text-align: center;
+}
+
+.text-container h2 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+}
+
+.text-container h3 {
+  margin-top: 0px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+.text-container p {
+  margin-top: -10px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: white;
+}
+.form-check {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+}
+.form-check a {
+  color: var(--normal-color);
+  transition: 0.5;
+}
+
+.form-check a:hover {
+  color: var(--darkest-color);
+}
+
+.form-check input[type="checkbox"] {
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 15px;
+  padding: 0px;
+  margin-left: 3;
+  cursor: pointer;
+}
+
+.form-check .label-holder {
+  grid-row: 1;
+  grid-column: 1;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  font-weight: 500;
+}
+
+.form-check label {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  font-size: 15px;
+}
+
+.form-check a {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 2px;
+}
+
+.outer-container .container .login-form .content mat-icon {
+  margin-left: 5px;
+  font-size: 20px;
+  width: 10%;
+  height: 100%;
+}
+
+.outer-container .container .login-form .content .register-button a button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 35px;
+}
+
+.outer-container
+  .container
+  .login-form
+  .content
+  button[type="button"]
+  mat-icon {
+  margin-left: -10px;
+  font-size: 20px;
+  width: 24%;
+  height: 100%;
+}
+
+mat-icon#launch {
+  font-size: 17px;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    display: block;
+    height: 100vh;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .image-container img {
+    width: 160px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .text-container {
+    h2 {
+      font-size: 16px;
+      display: none;
+    }
+
+    h3 {
+      font-size: 12px;
+      display: none;
+    }
+
+    p {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+  }
+
+  .login-form {
+    margin: auto;
+  }
+}

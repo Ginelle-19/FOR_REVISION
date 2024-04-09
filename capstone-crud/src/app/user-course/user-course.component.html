@@ -1,0 +1,52 @@
+<div class="container-course">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p><mat-icon fontIcon="book" aria-hidden="false"> </mat-icon>Courses</p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form></form>
+      <div class="container-table">
+        <table cellspacing="0">
+          <thead>
+            <tr>
+              <th scope="col">Course Code</th>
+              <th scope="col">Course Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let CourseItem of CourseArray
+                  | paginate
+                    : {
+                        itemsPerPage: itemsPerPage,
+                        currentPage: p,
+                        totalItems: CourseArray.length
+                      }
+              "
+            >
+              <td>{{ CourseItem.CourseCode }}</td>
+              <td>{{ CourseItem.CourseName }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-pagination-outer">
+          <pagination-controls
+            class="table-pagination-inner"
+            (pageChange)="p = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

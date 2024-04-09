@@ -1,0 +1,185 @@
+<div class="container-equipment-crud">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="devices" aria-hidden="false"> </mat-icon>Equipment
+        </p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form>
+        <div class="container-form-group">
+          <div class="form-group">
+            <div class="custom-select">
+              <label>Course: </label>
+
+              <select
+                [(ngModel)]="CourseID"
+                class="form-control"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option
+                  *ngFor="let CourseItem of CourseArray"
+                  [value]="CourseItem.CourseID"
+                  class="select-option"
+                >
+                  {{ CourseItem.CourseName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Equipment Name</label>
+            <input
+              type="text"
+              [(ngModel)]="EquipmentName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="EquipmentName"
+              placeholder=""
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Quantity </label>
+            <input
+              type="number"
+              [(ngModel)]="Quantity"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="Quantity"
+              placeholder=""
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Calibration Schedule</label>
+            <input
+              type="date"
+              [(ngModel)]="CalibrationSchedule"
+              [ngModelOptions]="{ standalone: true }"
+              [min]="minDate"
+              class="form-control"
+              id="CalibrationSchedule"
+              placeholder="DD-MM-YYYY"
+            />
+          </div>
+        </div>
+
+        <div class="container-button">
+          <button type="button" class="btn btn-danger" (click)="register()">
+            <mat-icon fontIcon="add" aria-hidden="false"></mat-icon>
+            Add
+          </button>
+          <button type="submit" class="btn btn-primary mt-4" (click)="save()">
+            <mat-icon fontIcon="save" aria-hidden="false"></mat-icon>
+            Update
+          </button>
+        </div>
+
+        <div class="container-filter-main">
+          <div class="container-filter">
+            <select
+              [(ngModel)]="SelectedCourseID"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option
+                *ngFor="let course of CourseArray"
+                [value]="course.CourseID"
+              >
+                {{ course.CourseName }}
+              </option>
+            </select>
+            <button (click)="filterEquipments()">Filter</button>
+            <button (click)="clearFilter()">Clear</button>
+          </div>
+
+          <div class="container-search">
+            <input
+              type="text"
+              [(ngModel)]="searchValue"
+              placeholder="Search Equipment Name"
+            />
+            <button class="btn btn-primary" (click)="searchEquipment()">Search</button>
+            <button class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+          </div>
+        </div>
+        <div class="pdf-button">
+          <input
+            type="button"
+            value="Download PDF"
+            class="btn btn-success"
+            (click)="SavePDF()"
+          />
+        </div>
+      </form>
+    </div>
+
+    <div class="container-table">
+      <table cellspacing="0" id="content" #content>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Equipment Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Calibration Schedule</th>
+            <th scope="col" *ngIf="!isPDF">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let EquipmentItem of EquipmentArray
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: p,
+                      totalItems: EquipmentArray.length
+                    }
+            "
+          >
+            <td>{{ EquipmentItem.EquipmentID }}</td>
+            <td>{{ EquipmentItem.EquipmentName }}</td>
+            <td>{{ EquipmentItem.Quantity }}</td>
+            <td>
+              {{ EquipmentItem.CalibrationSchedule | date : "yyyy-MM-dd" }}
+            </td>
+            <td class="table-button" *ngIf="!isPDF">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setUpdate(EquipmentItem)"
+              >
+                <mat-icon fontIcon="edit" aria-hidden="false"> </mat-icon>
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setDelete(EquipmentItem)"
+              >
+                <mat-icon fontIcon="delete" aria-hidden="false"> </mat-icon>
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-pagination-outer">
+        <pagination-controls
+          class="table-pagination-inner"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

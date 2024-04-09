@@ -1,0 +1,159 @@
+.main-body {
+  background: url("/assets/mainbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+
+  display: flex;
+  max-width: 100%;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: -10px;
+}
+
+.container {
+  background-color: #f3f3f3ee;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(245, 245, 245, 0.192);
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  display: grid;
+}
+
+.section-header {
+  text-align: center;
+}
+
+.section-header h1 {
+  font-weight: 900;
+}
+
+#lab {
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#solutions {
+  margin: 0;
+  padding: 0;
+  margin-top: -15px;
+  font-size: 20px;
+}
+
+h1.tac {
+  padding: 0px 50px;
+  margin: 0;
+  padding-top: 30px;
+}
+
+hr {
+  content: "";
+  width: 90%;
+  padding: 1px;
+  background-color: black;
+}
+
+.section-header {
+  text-align: center;
+}
+
+.section-holder {
+  overflow-y: scroll;
+  height: 500px;
+  width: 90%;
+  margin: auto;
+}
+
+.section-holder .section h4 {
+  font-weight: 800;
+  margin-bottom: 0px;
+}
+
+.section-holder .section p {
+  margin-top: 0px;
+  font-size: 13px;
+}
+
+.emails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 70%;
+}
+
+.emails p {
+  font-size: 13px;
+  margin-top: 0;
+}
+
+.button-container {
+  padding: 30px 35px 20px 20px;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+}
+
+.button-container a {
+  text-decoration: none;
+  margin-right: 5px;
+  grid-column: 2;
+}
+
+.button-container a button {
+  background-color: var(--normal-color);
+  border-style: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  transition: 0.5s;
+}
+
+.button-container a button:hover {
+  background-color: var(--darkest-color);
+}
+
+.button-container a button mat-icon {
+  padding-left: 10px;
+}
+
+.copyright {
+  background-color: var(--darkest-color);
+  width: 100%;
+}
+
+.copyright p {
+  text-align: center;
+  font-size: 13px;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  h1.tac {
+    font-size: 20px;
+    margin-left: -30px;
+  }
+
+  .section-holder {
+    height: 450px;
+  }
+}

@@ -1,0 +1,68 @@
+<div class="container-facilities">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="business" aria-hidden="false"> </mat-icon
+          >Facilities
+        </p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form></form>
+
+      <div class="container-table">
+        <div *ngIf="isResultLoaded">
+          <table cellspacing="0">
+            <thead>
+              <tr>
+                <th scope="col">Room</th>
+                <th scope="col">Room Description</th>
+                <th scope="col">Room Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let RoomItem of RoomsArray
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: p,
+                          totalItems: FacilityArray.length
+                        }
+                "
+              >
+                <td>{{ RoomItem.RoomName }}</td>
+                <td>{{ RoomItem.RoomDesc }}</td>
+                <td>
+                  <div
+                    class="button"
+                    [class.active]="RoomItem.RoomStatus === 1"
+                    [class.inactive]="RoomItem.RoomStatus === 0"
+                  >
+                    {{ RoomItem.RoomStatus ? "Available" : "In Use" }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-pagination-outer">
+            <pagination-controls
+              class="table-pagination-inner"
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" class="mat-elevation-z3" opened="true">
+    <mat-toolbar class="toolbar-with-image">
+      <div class="image-container">
+        <img [src]="imageUrl" alt="Holy Angel University" />
+      </div>
+    </mat-toolbar>
+
+    <div class="nav-list-icon">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/menu/profile" class="itemlink">
+          <mat-icon fontIcon="account_circle" aria-hidden="false"> </mat-icon>
+          Profile
+        </a>
+        <a mat-list-item routerLink="/menu/courses" class="itemlink">
+          <mat-icon fontIcon="book" aria-hidden="false"> </mat-icon>
+          Course
+        </a>
+
+        <a mat-list-item routerLink="/menu/equipments" class="itemlink">
+          <mat-icon fontIcon="devices" aria-hidden="false"> </mat-icon>
+          Equipment
+        </a>
+        <a mat-list-item routerLink="/menu/consumables" class="itemlink">
+          <mat-icon fontIcon="eco" aria-hidden="false"> </mat-icon>
+          Consumables
+        </a>
+        <a mat-list-item routerLink="/menu/reports" class="itemlink">
+          <mat-icon fontIcon="assignment" aria-hidden="false"> </mat-icon>
+          Equipment <br />Reports
+        </a>
+        <a mat-list-item routerLink="/menu/consumableReports" class="itemlink">
+          <mat-icon fontIcon="assignment_turned_in" aria-hidden="false">
+          </mat-icon>
+          Consumable <br />Reports
+        </a>
+        <a mat-list-item routerLink="/menu/facilities" class="itemlink">
+          <mat-icon fontIcon="business" aria-hidden="false"> </mat-icon>
+          Facilities
+        </a>
+        <a mat-list-item routerLink="/menu/manageUsers" class="itemlink">
+          <mat-icon fontIcon="manage_accounts" aria-hidden="false"> </mat-icon>
+          Manage <br />Users
+        </a>
+        <div class="list-last-main">
+          <div class="list-last">
+            <a mat-list-item routerLink="/" [queryParams]="{ logout: true }"
+              ><mat-icon fontIcon="logout" aria-hidden="false"></mat-icon
+              >Logout</a
+            >
+          </div>
+        </div>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="custom-toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon class="menu-icon">menu</mat-icon>
+      </button>
+      <div class="content-container">
+        <div class="centered-content">
+          <div class="title-container">
+            <span>College of Criminal Justice Education and Forensics</span>
+            <h4>LAB SOLUTIONS</h4>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="content-container content-container-background">
+      <div class="body_main">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,116 @@
+<div class="container-course-crud">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="book" aria-hidden="false"> </mat-icon>
+          Courses
+        </p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form>
+        <div class="container-form-group">
+          <div class="form-group">
+            <label>Course Code</label>
+            <input
+              type="text"
+              [(ngModel)]="CourseCode"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="CourseCode"
+              placeholder="Enter Code"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Course Name</label>
+            <input
+              type="text"
+              [(ngModel)]="CourseName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="CourseName"
+              placeholder="Enter Name"
+            />
+          </div>
+        </div>
+
+        <div class="container-button">
+          <button type="button" (click)="register()">
+            <mat-icon fontIcon="add" aria-hidden="false"></mat-icon>
+            Add
+          </button>
+          <button type="submit" (click)="save()">
+            <mat-icon fontIcon="save" aria-hidden="false"></mat-icon>
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container-table">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            *ngFor="
+              let CourseItem of CourseArray
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: p,
+                      totalItems: CourseArray.length
+                    }
+            "
+          >
+            <td>{{ CourseItem.CourseID }}</td>
+            <td>{{ CourseItem.CourseCode }}</td>
+            <td>{{ CourseItem.CourseName }}</td>
+            <td class="table-button">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setUpdate(CourseItem)"
+              >
+                <mat-icon fontIcon="edit" aria-hidden="false"> </mat-icon>
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setDelete(CourseItem)"
+              >
+                <mat-icon fontIcon="delete" aria-hidden="false"> </mat-icon>
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-pagination-outer">
+        <pagination-controls
+          class="table-pagination-inner"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

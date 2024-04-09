@@ -1,0 +1,126 @@
+<div class="container-facility-crud">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="business" aria-hidden="false"> </mat-icon
+          >Facilities
+        </p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form>
+        <div class="container-form-group">
+          <div class="form-group">
+            <label>Room Name</label>
+            <input
+              type="text"
+              [(ngModel)]="RoomName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="RoomName"
+              placeholder="Room Name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Room Description </label>
+            <input
+              type="text"
+              [(ngModel)]="RoomDesc"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="RoomDesc"
+              placeholder="Room Description"
+            />
+          </div>
+        </div>
+
+        <div class="container-button">
+          <button type="button" class="btn btn-danger" (click)="addRooms()">
+            <mat-icon fontIcon="add" aria-hidden="false"> </mat-icon>
+            Add
+          </button>
+          <button type="submit" class="btn btn-primary mt-4" (click)="save()">
+            <mat-icon fontIcon="save" aria-hidden="false"> </mat-icon>
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container-table">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col">Room ID</th>
+            <th scope="col">Room</th>
+            <th scope="col">Room Description</th>
+            <th scope="col">Room Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let RoomItem of RoomsArray
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: p,
+                      totalItems: FacilityArray.length
+                    }
+            "
+          >
+            <td>{{ RoomItem.RoomID }}</td>
+            <td>{{ RoomItem.RoomName }}</td>
+            <td>{{ RoomItem.RoomDesc }}</td>
+            <td>
+              <button
+                class="active-button"
+                type="button"
+                (click)="toggleActive(RoomItem)"
+                [class.active]="RoomItem.RoomStatus === 1"
+                [class.inactive]="RoomItem.RoomStatus === 0"
+              >
+                {{ RoomItem.RoomStatus ? "Available" : "In Use" }}
+              </button>
+            </td>
+            <td class="table-button">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setUpdate(RoomItem)"
+              >
+                <mat-icon fontIcon="edit" aria-hidden="false"> </mat-icon>
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteRoom(RoomItem)"
+              >
+                <mat-icon fontIcon="delete" aria-hidden="false"> </mat-icon>
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-pagination-outer">
+        <pagination-controls
+          class="table-pagination-inner"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,189 @@
+<div class="container-consumable-crud">
+  <div class="container-inside">
+    <div class="card">
+      <div class="header">
+        <p>
+          <mat-icon fontIcon="eco" aria-hidden="false"> </mat-icon>Consumables
+        </p>
+      </div>
+      <!-- Loader -->
+      <div class="loader-container" *ngIf="!isResultLoaded">
+        <div class="loader">
+          <label
+            >Sorry, we're having trouble loading the database. Try reloading the
+            page.</label
+          >
+          <div class="loading"></div>
+        </div>
+      </div>
+      <form>
+        <div class="container-form-group">
+          <div class="custom-select">
+            <div class="form-group">
+              <label>Course: </label>
+              <select
+                [(ngModel)]="CourseID"
+                class="form-control"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option
+                  *ngFor="let CourseItem of CourseArray"
+                  [value]="CourseItem.CourseID"
+                >
+                  {{ CourseItem.CourseName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Consumable Name</label>
+            <input
+              type="text"
+              [(ngModel)]="ConsumableName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="ConsumableName"
+              placeholder=""
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Quantity </label>
+            <input
+              type="number"
+              [(ngModel)]="Quantity"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="Quantity"
+              placeholder=""
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Expiration Date</label>
+            <input
+              type="date"
+              [(ngModel)]="ExpirationDate"
+              [ngModelOptions]="{ standalone: true }"
+              [min]="minDate"
+              class="form-control"
+              id="ExpirationDate"
+              placeholder="DD-MM-YYYY"
+            />
+          </div>
+        </div>
+
+        <div class="container-button">
+          <button type="button" class="btn btn-danger" (click)="register()">
+            <mat-icon fontIcon="add" aria-hidden="false"></mat-icon>
+            Add
+          </button>
+          <button type="submit" class="btn btn-primary mt-4" (click)="save()">
+            <mat-icon fontIcon="save" aria-hidden="false"></mat-icon>
+            Update
+          </button>
+        </div>
+
+        <div class="container-filter-main">
+          <div class="container-filter">
+            <select
+              [(ngModel)]="SelectedCourseID"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option
+                *ngFor="let course of CourseArray"
+                [value]="course.CourseID"
+              >
+                {{ course.CourseName }}
+              </option>
+            </select>
+            <button (click)="filterConsumables()">Filter</button>
+            <button (click)="clearFilter()">Clear</button>
+          </div>
+          <div class="container-search">
+            <input type="text" [(ngModel)]="searchValue" placeholder="Search Consumable Name" />
+            <button class="btn btn-primary" (click)="searchConsumables()">Search</button>
+            <button class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+          </div>
+        </div>
+        <div class="pdf-button">
+          <input
+            type="button"
+            value="Download PDF"
+            class="btn btn-success"
+            (click)="SavePDF()"
+          />
+        </div>
+      </form>
+    </div>
+
+  
+
+    <div class="container-table">
+      <table cellspacing="0" id="content" #content>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Consumable Name</th>
+            <th scope="col">Quantity</th>
+            <th>Status</th>
+            <th scope="col">Expiration Date</th>
+            <th scope="col" *ngIf="!isPDF">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let ConsumableItem of ConsumableArray
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: p,
+                      totalItems: ConsumableArray.length
+                    }
+            "
+          >
+            <td>{{ ConsumableItem.ConsumableID }}</td>
+            <td>{{ ConsumableItem.ConsumableName }}</td>
+            <td>{{ ConsumableItem.Quantity }}</td>
+            <td>
+              <div
+                class="stocks-main"
+                [ngClass]="getStatusClass(ConsumableItem.Quantity)"
+              >
+                <div class="stocks">
+                  {{ getStatusString(ConsumableItem.Quantity) }}
+                </div>
+              </div>
+            </td>
+            <td>{{ ConsumableItem.ExpirationDate | date : "dd-MM-yyyy" }}</td>
+            <td class="table-button" *ngIf="!isPDF">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setUpdate(ConsumableItem)"
+              >
+                <mat-icon fontIcon="edit" aria-hidden="false"> </mat-icon>
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setDelete(ConsumableItem)"
+              >
+                <mat-icon fontIcon="delete" aria-hidden="false"> </mat-icon>
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-pagination-outer">
+        <pagination-controls
+          class="table-pagination-inner"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

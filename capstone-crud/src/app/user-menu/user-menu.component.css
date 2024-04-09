@@ -1,0 +1,227 @@
+/* Main background of all components */
+.mat-sidenav-content {
+  background: url("/assets/menu_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mat-sidenav-container {
+  height: 100vh;
+  overflow: hidden;
+}
+/* --------------------------------- */
+
+/* Header */
+/* CCJEF LOGO */
+.mat-toolbar img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.custom-toolbar {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  padding: 0px 16px;
+}
+
+.centered-content {
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.mat-toolbar {
+  height: 120px;
+  background-color: #993399;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.mat-toolbar span {
+  font-size: 35px;
+  color: #f3f3f3;
+}
+
+.mat-toolbar h4 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #f3f3f3;
+}
+
+span,
+h4 {
+  margin: 8px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+/* ------ */
+
+/* Hamburger */
+button {
+  background-color: transparent;
+  outline: 0px;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-icon {
+  color: #f3f3f3;
+  transition: 0.5s;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
+}
+/* --------- */
+
+/* Icons */
+mat-icon {
+  color: var(--darkest-color);
+  display: block;
+  margin: auto;
+}
+/* ----- */
+
+/* SideNav formats */
+/* Navbar text format */
+.sidenav-container a {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+/* ------------------ */
+
+/* SideNav Width */
+.mat-sidenav {
+  width: 102px;
+  padding: 0;
+}
+
+.sidenav-container .navlist-icon .itemlink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.5s;
+}
+
+.sidenav-container .itemlink-last {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 0px;
+  -webkit-transition: 0.1s;
+  transition: 0.5s;
+}
+
+.sidenav-container .itemlink:hover {
+  background-color: #e2bce2;
+}
+
+.sidenav-container .list-last-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.sidenav-container .list-last {
+  border: 1px solid #474747;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+  margin-top: -130px;
+  height: 50px;
+}
+
+.sidenav-container .list-last:hover {
+  background-color: var(--lightest-color);
+  border: 1px solid var(--lightest-color);
+}
+
+.sidenav-container .list-last a {
+  padding: 5px 15px;
+}
+
+.sidenav-container .list-last-main .list-last mat-icon {
+  color: var(--darkest-color);
+}
+
+.mdc-list-item {
+  display: flex;
+  align-items: center;
+  padding: 40px 8px;
+  cursor: pointer;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------- */
+@media screen and (max-width: 480px) {
+  .mat-sidenav-content {
+    background: url("/assets/mobilemenu_bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .mat-sidenav-content {
+    margin-left: 0 !important;
+    overflow-x: hidden;
+  }
+
+  .custom-toolbar {
+    display: flex;
+  }
+
+  .custom-toolbar button {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+  }
+
+  .title-container {
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .title-container span {
+    font-size: 14px;
+  }
+
+  .title-container h4 {
+    font-size: 16px;
+  }
+
+  .mat-toolbar {
+    height: 90px;
+  }
+}

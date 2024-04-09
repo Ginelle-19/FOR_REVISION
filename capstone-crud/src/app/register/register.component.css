@@ -1,0 +1,156 @@
+.body {
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("/assets/mainbg.jpg") center center/cover no-repeat;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+  width: 400px;
+  opacity: 0.9;
+}
+
+.body .container .register-form div {
+  padding-bottom: 15px;
+}
+
+.body .container .register-form .header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -5px;
+  padding-bottom: 20px;
+  color: #993399;
+}
+
+.body .container .register-form label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+.body .container .register-form input {
+  width: 100%;
+  padding: 17px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.body .container .register-form input::placeholder {
+  font-weight: 400;
+}
+
+.body .container .register-form input[type="text"] {
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  outline: none;
+}
+
+.body .container .register-form input[type="text"]:focus {
+  border: 2px solid #993399;
+}
+
+.body .container .register-form input[type="date"] {
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  outline: none;
+}
+
+.body .container .register-form input[type="date"]:focus {
+  border: 2px solid #993399;
+}
+
+.body .container .register-form button {
+  width: 100%;
+  margin-top: -4px;
+  padding: 14px;
+  background-color: #993399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+
+.body .container .register-form button:hover {
+  background-color: #660066;
+}
+
+.body .container .register-form button a {
+  color: white;
+  text-decoration: none;
+}
+
+.body .container .register-form .container-button {
+  margin-top: 20px;
+  margin-bottom: -30px;
+}
+
+.body
+  .container
+  .register-form
+  .container-button
+  button[type="submit"]
+  mat-icon {
+  margin-left: 8px;
+  font-size: 27px;
+  width: 10%;
+  height: 100%;
+}
+
+.body .container .register-form .container-button a {
+  text-decoration: none;
+}
+
+.body
+  .container
+  .register-form
+  .container-button
+  button[type="button"]
+  mat-icon {
+  margin-left: 10px;
+  font-size: 27px;
+  width: 10%;
+  height: 100%;
+}
+
+.birthday-error {
+  color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 60%;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+}

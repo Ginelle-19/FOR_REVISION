@@ -1,0 +1,312 @@
+/* Start of Main Table format */
+.container-consumable {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.mat-drawer-content {
+  height: 0;
+}
+
+.container-consumable .container-inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+}
+/* End of Main Table format */
+
+/* Start of Main header format */
+
+.container-consumable .container-inside .card form {
+  width: 900px;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--darkest-color);
+}
+
+.container-consumable .container-inside .card p {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0px 0px 0px 20px;
+}
+
+p mat-icon {
+  padding-right: 10px;
+}
+
+.container-consumable .container-inside .container-filter {
+  padding: 15px 0px 0px 20px;
+}
+
+.container-consumable .container-inside .container-filter select {
+  padding: 8px 7px;
+  border-style: none;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.185);
+}
+
+.container-consumable .container-inside .container-filter button {
+  padding: 10px 20px;
+  border-style: none;
+  background-color: var(--normal-color);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-left: 10px;
+}
+/* End of Header Table format */
+
+/* Start of Table format */
+.container-consumable .container-inside .container-table {
+  border-spacing: 0;
+  width: 100%;
+  padding: 0px 0px;
+}
+
+.container-consumable .container-inside .container-table table {
+  width: 100%;
+  padding: 0px 20px;
+  border-spacing: 0px 10px;
+}
+
+.container-consumable .container-inside .container-table table th {
+  color: var(--background-color);
+  font-weight: 500;
+  padding: 10px 10px;
+  margin: 50px 0px;
+  background-color: #660066;
+}
+
+.container-consumable .container-inside .container-table table td {
+  padding: 10px 20px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.185);
+  font-weight: 400;
+  color: #5e5e5e;
+}
+
+.container-consumable .container-inside .container-table table td:nth-child(1) {
+  font-weight: 700;
+}
+
+.container-consumable .container-inside .container-table table tr:hover {
+  background-color: var(--lightest-color);
+}
+
+.stocks-main {
+  margin: auto;
+  font-size: 13px;
+}
+
+.Not-Available,
+.Low-on-Stock,
+.Available {
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.Not-Available:hover,
+.Low-on-Stock:hover,
+.Available:hover {
+  transform: scale(1.1);
+}
+
+.Not-Available {
+  background-color: rgb(143, 143, 143);
+  color: #c9c9c9;
+  width: 110px;
+  padding: 3px 0px;
+  border-radius: 4px;
+}
+
+.Low-on-Stock {
+  background-color: var(--deletebutton-color);
+  color: white;
+  width: 110px;
+  padding: 3px 0px;
+  border-radius: 4px;
+}
+
+.Available {
+  background-color: var(--green-color);
+  color: white;
+  width: 90px;
+  padding: 3px 0px;
+  border-radius: 4px;
+}
+/* End of Table format */
+
+/* Start of Pagination format */
+.table-pagination-outer {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  margin: 0px 20px 20px 20px;
+  background: var(--darkest-color);
+  height: 35px;
+}
+
+.table-pagination-inner {
+  grid-column: 1;
+  height: 40px;
+  margin-top: -9px;
+}
+
+.table-pagination-inner ::ng-deep .ngx-pagination .current {
+  background: white;
+  color: var(--graydarkest-color);
+}
+
+.table-pagination-inner ::ng-deep .ngx-pagination a {
+  color: #ccc;
+}
+
+.table-pagination-inner ::ng-deep .ngx-pagination a:hover {
+  color: var(--graydarkest-color);
+}
+/* End of Pagination format */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    119,
+    119,
+    119,
+    0.6
+  ); /* Adjust the background color and opacity */
+  z-index: -0;
+  margin-top: 120px;
+  margin-left: 100px;
+  text-align: center;
+}
+
+.loader {
+  width: 350px;
+  height: 180px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px;
+  box-shadow: 2px 2px 10px -5px lightgrey;
+  margin-top: -180px;
+  margin-left: -90px;
+  label {
+    color: #002;
+    font-size: 15px;
+    animation: bit 0.6s alternate infinite;
+  }
+}
+.loading {
+  width: 100%;
+  height: 10px;
+  background: lightgrey;
+  border-radius: 10px;
+  position: relative;
+}
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 10px;
+  background: var(--normal-color);
+  border-radius: 10px;
+  z-index: 1;
+  animation: loading 0.6s alternate infinite;
+}
+
+@keyframes bit {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: 25%;
+  }
+  100% {
+    left: 50%;
+  }
+  0% {
+    left: 0%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-consumable {
+    width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  .container-consumable .container-inside .card p {
+    font-size: 0.8em;
+  }
+
+  .container-consumable .container-inside .container-filter select {
+    width: 150px;
+  }
+
+  .container-consumable .container-inside .container-table table td {
+    font-size: 0.8em;
+  }
+
+  .container-consumable .container-inside .container-table table td {
+    padding: 10px 5px;
+  }
+
+  .table-pagination-inner {
+    font-size: 12px;
+    margin-top: -7px;
+  }
+
+  .table-pagination-outer {
+    display: flex;
+  }
+
+  .loader-container {
+    margin: auto;
+  }
+
+  .loader-container {
+    margin: auto;
+    margin-top: 90px;
+  }
+
+  .loader {
+    width: 200px;
+    height: 100px;
+    margin: auto;
+  }
+}
